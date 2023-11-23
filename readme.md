@@ -1,31 +1,38 @@
-## ECDSA Node
+# ECDSA Node
 
-This project is an example of using a client and server to facilitate transfers between different addresses. Since there is just a single server on the back-end handling transfers, this is clearly very centralized. We won't worry about distributed consensus for this project.
+В этом проекте представлен пример того, как клиент взаимодействует с сервером при совершении транзакции между двумя адресами. 
+Серверная часть состоит из одного узла, вопросы достижения консенсуса не рассматриваются.  
 
-However, something that we would like to incoporate is Public Key Cryptography. By using Elliptic Curve Digital Signatures we can make it so the server only allows transfers that have been signed for by the person who owns the associated address.
+Основная цель проекта - отработать на практике криптографию с открытым ключом, которая обеспечивает безопасность транзакций в блокчейне. 
+Цифровая подпись на эллиптических кривых (Elliptic Curve Digital Signatures Algorithm, ECDSA) позволяет совершать транзакции только тому, кто владеет закрытым ключом.  
 
-### Video instructions
-For an overview of this project as well as getting started instructions, check out the following video:
+Перед выполнением проекта установите [nodejs](https://nodejs.org/) и [git](https://git-scm.com/book/ru/).
+Клонируйте репозиторий на свою машину и перейдите в папку проекта. 
 
-https://www.loom.com/share/0d3c74890b8e44a5918c4cacb3f646c4
- 
+```bash
+git clone https://github.com/labintsev/ecdsa-node.git
+cd ecdsa-node
+```
+
 ### Client
 
-The client folder contains a [react app](https://reactjs.org/) using [vite](https://vitejs.dev/). To get started, follow these steps:
+Папка `client` содержит приложение на базе [react](https://reactjs.org/) и [vite](https://vitejs.dev/). 
+Инструкция для запуска клиента: 
 
-1. Open up a terminal in the `/client` folder
-2. Run `npm install` to install all the depedencies
-3. Run `npm run dev` to start the application 
-4. Now you should be able to visit the app at http://127.0.0.1:5173/
+1. Открыть в терминале папку `/client`
+2. Установить зависимости с помощью команды `npm install`
+3. Запустить клиент в режиме разработчика `npm run dev` 
+4. Убедиться что приложение запущено, перейдя по ссылке http://127.0.0.1:5173/
 
 ### Server
+Папка `server` содержит логику сервера на базе [express](https://expressjs.com/). 
+Инструкция для запуска сервера:
 
-The server folder contains a node.js server using [express](https://expressjs.com/). To run the server, follow these steps:
+1. Открыть в терминале папку `/server` 
+2. Установить зависимости с помощью команды `npm install`  
+3. Запустить сервер командой `node index` 
 
-1. Open a terminal within the `/server` folder 
-2. Run `npm install` to install all the depedencies 
-3. Run `node index` to start the server 
+Клиентская часть приложения автоматически подключится к серверу на порту 3042.  
+Для автоматической перезагрузки сервера при любом изменении исходного кода можно использовать команду [nodemon](https://www.npmjs.com/package/nodemon) вместо `node`. 
 
-The application should connect to the default server port (3042) automatically! 
 
-_Hint_ - Use [nodemon](https://www.npmjs.com/package/nodemon) instead of `node` to automatically restart the server on any changes.
